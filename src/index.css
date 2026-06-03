@@ -6,7 +6,7 @@
 }
 
 body{
-  background-image: url('/bg.jpg');
+  background-image: url('bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,8 +21,13 @@ main{
   gap: 50px;
 }
 
+img{
+  height: 350px;
+  width: auto;
+}
+
 @media (width <= 1000px){
   body{
-  background-image: url('/bgMobile.jpg');
+  background-image: url('');
 }
 }

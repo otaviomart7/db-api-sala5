@@ -2,21 +2,20 @@ import s from './App.module.css'
 import { useEffect, useState } from 'react'
 import { api } from './constants/api'
 
-import logo from '/logo.png'
 import { Card } from './components/card'
 
 function App() {
   const [data, setData] = useState([])
-  const [page, setPage] = useState()
+  const [page, setPage] = useState(1)
   const [inputPage, setInputPage] = useState("")
 
 
   useEffect(() => {
    const carrega = async () => {
     try{
-      const item = await api.get(`/characters`)
-      console.log(Response.data.items)
-      setData(item.data.results)
+      const response = await api.get(`/characters?page=${page}`)
+      console.log(response.data.items)
+      setData(response.data.items)
       
     }catch{
       console.error("Deu ruim!!!")
@@ -35,7 +34,7 @@ function App() {
       <main>
         {data.map(items => {
           return(
-           <Card unico={items.id} imagem={items.image} nome={items.name} especie={items.ki} origem={items.race}/>
+           <Card unico={items.id} imagem={items.image} nome={items.name} ki={items.ki} race={items.race} gender={items.gender}/>
           )
         })}
 
